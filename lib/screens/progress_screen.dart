@@ -20,8 +20,8 @@ class _ProgressScreenState extends State<ProgressScreen> {
     final progress = await DatabaseService().getProgress();
     if (progress != null) {
       setState(() {
-        currentLevel = progress['level'];
-        correctAnswers = progress['correct_answers'];
+        currentLevel = progress['Nivel'];
+        correctAnswers = progress['Respuesta correcta'];
       });
     }
   }
@@ -29,14 +29,14 @@ class _ProgressScreenState extends State<ProgressScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Progress')),
+      appBar: AppBar(title: Text('Progreso')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Current Level: $currentLevel', style: TextStyle(fontSize: 24)),
+            Text('Nivel actual: $currentLevel', style: TextStyle(fontSize: 24)),
             SizedBox(height: 10),
-            Text('Correct Answers in a Row: $correctAnswers', style: TextStyle(fontSize: 18)),
+            Text('Excelente respuesta correcta: $correctAnswers', style: TextStyle(fontSize: 18)),
           ],
         ),
       ),

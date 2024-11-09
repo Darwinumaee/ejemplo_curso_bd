@@ -7,7 +7,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SQL Trainer'),
+        title: Text('CURSO DE SQL'),
       ),
       body: Center(
         child: Column(
@@ -17,13 +17,13 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => ExerciseScreen()));
               },
-              child: Text('Start Training'),
+              child: Text('Iniciar el curso'),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => ProgressScreen()));
               },
-              child: Text('View Progress'),
+              child: Text('Revisa tu progreso'),
             ),
           ],
         ),

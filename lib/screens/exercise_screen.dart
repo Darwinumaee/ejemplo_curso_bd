@@ -31,15 +31,15 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('SQL Exercise')),
+      appBar: AppBar(title: Text('Ejercicios de SQL')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             Text(currentExercise.question, style: TextStyle(fontSize: 18)),
-            TextField(controller: _controller, decoration: InputDecoration(labelText: 'Your Answer')),
+            TextField(controller: _controller, decoration: InputDecoration(labelText: 'Escribe aquí tu respuesta')),
             SizedBox(height: 20),
-            ElevatedButton(onPressed: checkAnswer, child: Text('Submit'))
+            ElevatedButton(onPressed: checkAnswer, child: Text('Aceptar'))
           ],
         ),
       ),

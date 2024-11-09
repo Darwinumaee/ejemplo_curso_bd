@@ -11,8 +11,8 @@ class DatabaseService {
 
   Future<Database> get database async {
     if (_database != null) return _database!;
-      _database = await _initDatabase();
-      return _database!;
+    _database = await _initDatabase();
+    return _database!;
   }
 
   Future<Database> _initDatabase() async {
@@ -22,21 +22,30 @@ class DatabaseService {
       version: 1,
       onCreate: (db, version) {
         return db.execute(
-          'CREATE TABLE progress(level INTEGER, correct_answers INTGER)',
+          'CREATE TABLE progress(level INTEGER, correct_answers INTEGER)',
         );
       },
     );
   }
 
-  Future<void> SaveProgress(int level, int correctAnswers) async {
-    final db = await database;
-    await db.insert('progress', {'level': level, 'correct_answers': correctAnswers},
-    conflictAlgorithm: ConflictAlgorithm.replace);
+  Future<void> saveProgress(int level, int correctAnswers) async {
+    try {
+      final db = await database;
+      await db.insert('progress', {'level': level, 'correct_answers': correctAnswers},
+          conflictAlgorithm: ConflictAlgorithm.replace);
+    } catch (e) {
+      print('Error saving progress: $e');
+    }
   }
 
   Future<Map<String, dynamic>?> getProgress() async {
-    final db = await database;
-    final result = await db.query('progress', limit: 1);
-    return result.isNotEmpty ? result.first : null;
+    try {
+      final db = await database;
+      final result = await db.query('progress', limit: 1);
+      return result.isNotEmpty ? result.first : null;
+    } catch (e) {
+      print('Error loading progress: $e');
+      return null;
+    }
   }
 }
