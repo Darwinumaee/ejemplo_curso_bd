@@ -22,12 +22,12 @@ class ExerciseCardWidget extends StatelessWidget {
             Text(exercise.question, style: TextStyle(fontSize: 18)),
             TextField(
               controller: _controller,
-              decoration: InputDecoration(labelText: 'Your Answer'),
+              decoration: InputDecoration(labelText: 'Escribe tu respuesta'),
             ),
             SizedBox(height: 10),
             ElevatedButton(
               onPressed: () => onAnswerSubmit(_controller.text),
-              child: Text('Submit Answer'),
+              child: Text('Es correcto?'),
             ),
           ],
         ),
